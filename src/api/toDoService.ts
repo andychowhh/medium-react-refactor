@@ -1,10 +1,16 @@
-const TO_DO_ITEMS = [
+export interface ToDoItem {
+    id: number;
+    name: string;
+    isCompleted: boolean;
+}
+
+const TO_DO_ITEMS: ToDoItem[] = [
     {id:1, name:'Shopping', isCompleted: true},
     {id:2, name:'Running', isCompleted: false},
     {id:3, name:'Lunch', isCompleted: true},
 ]
 
-export const fetchToDos = () => {
+export const fetchToDos = (): Promise<ToDoItem[]> => {
     return new Promise((resolve) => {
         resolve(TO_DO_ITEMS);
     })

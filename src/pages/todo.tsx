@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { fetchToDos } from "../api/toDoService";
+import { fetchToDos, ToDoItem } from "../api/toDoService";
 
 const ToDo = () => {
-  const [completedToDoItems, setCompletedToDoItems] = useState([]);
-  const [incompleteToDoItems, setIncompleteToDoItems] = useState([]);
+  const [completedToDoItems, setCompletedToDoItems] = useState<ToDoItem[]>([]);
+  const [incompleteToDoItems, setIncompleteToDoItems] = useState<ToDoItem[]>([]);
 
   useEffect(() => {
     const fetctToDoItems = async () => {
       const allToDoItems = await fetchToDos();
-
+      
       const completed = allToDoItems.filter((item) => item.isCompleted === true);
       const incompleted = allToDoItems.filter(
         (item) => item.isCompleted === false
