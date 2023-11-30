@@ -1,6 +1,7 @@
 import React from "react";
 import {getTodoItemsByStatus} from '../utils/getTodoItemsByStatus'
 import { useGetToDoItems } from "../hooks/useGetToDoItems";
+import ToDoGroup from "../components/ToDoGroup";
 
 const ToDo = () => {
   const toDoItems = useGetToDoItems();
@@ -9,18 +10,8 @@ const ToDo = () => {
   return (
     <div>
       <h1>My todo list</h1>
-      <h2>Completed:</h2>
-      {completedToDoItems.map(({ id, name }) => (
-        <div key={id}>
-          <h3>{name}</h3>
-        </div>
-      ))}
-      <h2>Not Completed:</h2>
-      {incompleteToDoItems.map(({ id, name }) => (
-        <div key={id}>
-          <h3>{name}</h3>
-        </div>
-      ))}
+      <ToDoGroup title="Completed" todoItems={completedToDoItems}/>
+      <ToDoGroup title="Incomplete" todoItems={incompleteToDoItems}/>
     </div>
   );
 };
