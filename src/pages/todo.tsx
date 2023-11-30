@@ -1,24 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { fetchToDos, ToDoItem } from "../api/toDoService";
+import React from "react";
+import {getTodoItemsByStatus} from '../utils/getTodoItemsByStatus'
+import { useGetToDoItems } from "../hooks/useGetToDoItems";
 
 const ToDo = () => {
-  const [completedToDoItems, setCompletedToDoItems] = useState<ToDoItem[]>([]);
-  const [incompleteToDoItems, setIncompleteToDoItems] = useState<ToDoItem[]>([]);
-
-  useEffect(() => {
-    const fetctToDoItems = async () => {
-      const allToDoItems = await fetchToDos();
-      
-      const completed = allToDoItems.filter((item) => item.isCompleted === true);
-      const incompleted = allToDoItems.filter(
-        (item) => item.isCompleted === false
-      );
-
-      setCompletedToDoItems(completed);
-      setIncompleteToDoItems(incompleted);
-    };
-    fetctToDoItems();
-  }, []);
+  const toDoItems = useGetToDoItems();
+  const {completedToDoItems, incompleteToDoItems} = getTodoItemsByStatus(toDoItems);
 
   return (
     <div>
