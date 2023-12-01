@@ -1,3 +1,6 @@
+# Target
+This project is for [this article](https://medium.com/@hohin523/how-to-refactor-your-react-application-to-make-it-testable-part-1-8134656df2d9)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
